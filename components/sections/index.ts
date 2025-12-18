@@ -4,4 +4,4 @@ export { Skills } from './skills'
 export { Projects } from './projects'
 export { Experience } from './experience'
 export { Contact } from './contact'
-
+export { TerminalNav } from './terminal-nav'
