@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===================================
+   VARIABLES CSS GLOBALES
+   =================================== */
+:root {
+  --background: #0a0a0f;
+  --foreground: #f1f5f9;
+}
+
+/* ===================================
+   BASE STYLES
+   =================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #00d4ff #0a0a0f;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4ff, #7c3aed);
+  border-radius: 3px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #00d4ff;
+  color: #0a0a0f;
+}
+
+/* ===================================
+   GRID BACKGROUND PATTERN
+   =================================== */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ===================================
+   GLOW EFFECTS
+   =================================== */
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5),
+               0 0 40px rgba(0, 212, 255, 0.3),
+               0 0 60px rgba(0, 212, 255, 0.2);
+}
+
+.glow-box {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15),
+              0 0 40px rgba(0, 212, 255, 0.1),
+              inset 0 0 60px rgba(0, 212, 255, 0.05);
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.3),
+              0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+/* ===================================
+   GRADIENT ANIMATIONS
+   =================================== */
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ===================================
+   SCAN LINE EFFECT
+   =================================== */
+.scan-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  animation: scan-line 4s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ===================================
+   FLOATING ANIMATION
+   =================================== */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ===================================
+   TECH CARD STYLES
+   =================================== */
+.tech-card {
+  @apply relative overflow-hidden rounded-xl border border-border bg-surface/50 backdrop-blur-sm;
+  @apply transition-all duration-300 ease-out;
+}
+
+.tech-card:hover {
+  @apply border-primary/50 bg-surface;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 40px rgba(0, 212, 255, 0.1);
+}
+
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.tech-card:hover::before {
+  left: 100%;
+}
+
+/* ===================================
+   SKILL BAR
+   =================================== */
+.skill-bar {
+  @apply h-2 bg-surface-lighter rounded-full overflow-hidden;
+}
+
+.skill-progress {
+  @apply h-full rounded-full;
+  background: linear-gradient(90deg, #00d4ff, #7c3aed);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================================
+   BUTTON STYLES
+   =================================== */
+.btn-primary {
+  @apply relative overflow-hidden px-6 py-3 rounded-lg font-semibold;
+  @apply bg-gradient-to-r from-primary to-secondary text-background;
+  @apply transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply scale-105;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 rounded-lg font-semibold;
+  @apply border border-primary/50 text-primary;
+  @apply transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply bg-primary/10 border-primary;
+}
+
+/* ===================================
+   INPUT STYLES
+   =================================== */
+.input-field {
+  @apply w-full px-4 py-3 rounded-lg;
+  @apply bg-surface border border-border;
+  @apply text-text placeholder:text-text-tertiary;
+  @apply transition-all duration-300;
+  @apply focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20;
+}
+
+/* ===================================
+   TERMINAL STYLE
+   =================================== */
+.terminal {
+  @apply font-mono text-sm;
+  @apply bg-background border border-border rounded-lg p-4;
+}
+
+.terminal-prompt {
+  @apply text-accent-success;
+}
+
+.terminal-text {
+  @apply text-text-secondary;
+}
+
+/* ===================================
+   TAG STYLES
+   =================================== */
+.tag {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  @apply bg-primary/10 text-primary border border-primary/20;
+}
+
+.tag-cloud { @apply bg-cyan-500/10 text-cyan-400 border-cyan-500/20; }
+.tag-devops { @apply bg-violet-500/10 text-violet-400 border-violet-500/20; }
+.tag-ai { @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20; }
+.tag-programming { @apply bg-amber-500/10 text-amber-400 border-amber-500/20; }
+
+/* ===================================
+   RESPONSIVE UTILITIES
+   =================================== */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary;
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(90deg, #00d4ff, #7c3aed) 1;
+  }
+}
+

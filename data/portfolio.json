@@ -1,0 +1,309 @@
+{
+  "profile": {
+    "name": "Iyed Mohamed",
+    "title": "Cloud & DevOps Engineering Student",
+    "subtitle": "Passionate about Cloud, IoT & AI",
+    "bio": "Computer Engineering graduate specialized in IoT and Embedded Systems, currently pursuing Software Engineering with a focus on Cloud Computing, Virtualization, and DevOps at ESPRIT. Proficient in full-stack development (MERN), with hands-on experience in AI, Machine Learning, and Deep Learning. Passionate about solving complex problems and exploring emerging technologies.",
+    "email": "iyed.mohamed@esprit.tn",
+    "location": "Tunis, Tunisia",
+    "available": true,
+    "socialLinks": {
+      "github": "https://github.com/iyedM",
+      "linkedin": "https://linkedin.com/in/iyed-mohamed",
+      "twitter": ""
+    }
+  },
+  "categories": [
+    {
+      "id": "1",
+      "name": "Cloud",
+      "slug": "cloud",
+      "color": "cyan"
+    },
+    {
+      "id": "2",
+      "name": "DevOps",
+      "slug": "devops",
+      "color": "violet"
+    },
+    {
+      "id": "3",
+      "name": "Programming",
+      "slug": "programming",
+      "color": "amber"
+    },
+    {
+      "id": "4",
+      "name": "AI / ML",
+      "slug": "ai",
+      "color": "emerald"
+    }
+  ],
+  "skills": [
+    {
+      "id": "1",
+      "name": "Docker",
+      "category": "devops",
+      "icon": "docker"
+    },
+    {
+      "id": "2",
+      "name": "Terraform",
+      "category": "devops",
+      "icon": "terraform"
+    },
+    {
+      "id": "3",
+      "name": "GitHub Actions",
+      "category": "devops",
+      "icon": "cicd"
+    },
+    {
+      "id": "4",
+      "name": "Azure",
+      "category": "cloud",
+      "icon": "azure"
+    },
+    {
+      "id": "5",
+      "name": "Linux",
+      "category": "devops",
+      "icon": "server"
+    },
+    {
+      "id": "6",
+      "name": "Python",
+      "category": "programming",
+      "icon": "python"
+    },
+    {
+      "id": "7",
+      "name": "JavaScript",
+      "category": "programming",
+      "icon": "code"
+    },
+    {
+      "id": "8",
+      "name": "React / Node.js",
+      "category": "programming",
+      "icon": "code"
+    },
+    {
+      "id": "9",
+      "name": "Kubernetes",
+      "category": "devops",
+      "icon": "kubernetes"
+    },
+    {
+      "id": "10",
+      "name": "CI/CD Pipelines",
+      "category": "devops",
+      "icon": "cicd"
+    },
+    {
+      "id": "11",
+      "name": "TensorFlow / ML",
+      "category": "ai",
+      "icon": "ml"
+    },
+    {
+      "id": "12",
+      "name": "AWS",
+      "category": "cloud",
+      "icon": "aws"
+    },
+    {
+      "id": "13",
+      "name": "IoT / Embedded",
+      "category": "cloud",
+      "icon": "cpu"
+    },
+    {
+      "id": "14",
+      "name": "MongoDB",
+      "category": "devops",
+      "icon": "database"
+    },
+    {
+      "id": "15",
+      "name": "Bash / Shell",
+      "category": "devops",
+      "icon": "terminal"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "Smart Personal Cloud Monitoring Lab",
+      "description": "Mini cloud monitoring lab with a containerized Python application, Infrastructure as Code (IaC) with Terraform, and automated CI/CD pipeline with GitHub Actions.",
+      "image": "/images/cloud-lab.png",
+      "tags": [
+        "Docker",
+        "Terraform",
+        "GitHub Actions",
+        "Python",
+        "DevOps"
+      ],
+      "category": "devops",
+      "link": "https://github.com/iyedM/Smart-Personal-Cloud-Monitoring-Lab",
+      "featured": true
+    },
+    {
+      "id": "2",
+      "title": "IoT Wheat Supply Chain Traceability",
+      "description": "IoT-based wheat supply chain traceability system for Tunisia, integrating IoT, AI (CNN with TensorFlow), Blockchain, and Self-Sovereign Identity (SSI). React Native mobile app for credential verification.",
+      "image": "/images/wheat-iot.png",
+      "tags": [
+        "IoT",
+        "TensorFlow",
+        "Blockchain",
+        "React Native",
+        "Raspberry Pi",
+        "IPFS"
+      ],
+      "category": "ai",
+      "link": "https://github.com/iyedM",
+      "featured": true
+    },
+    {
+      "id": "3",
+      "title": "Swapify - Exchange Platform",
+      "description": "Cross-platform application promoting responsible consumption. Blog system with AI moderation, automatic description summarization, and inappropriate content detection.",
+      "image": "/images/swapify.png",
+      "tags": [
+        "Symfony",
+        "JavaFX",
+        "MySQL",
+        "AI",
+        "Content Moderation"
+      ],
+      "category": "ai",
+      "link": "https://github.com/iyedM",
+      "featured": true
+    },
+    {
+      "id": "4",
+      "title": "Real-time Chat Application",
+      "description": "Discord-inspired real-time chat application with secure authentication, chat rooms, private messages, multimedia sharing, audio/video calls, and group management.",
+      "image": "/images/chat-app.png",
+      "tags": [
+        "Node.js",
+        "React",
+        "WebSocket",
+        "MongoDB",
+        "WebRTC"
+      ],
+      "category": "devops",
+      "link": "https://github.com/iyedM",
+      "featured": false
+    },
+    {
+      "id": "5",
+      "title": "Solar Energy Monitoring System",
+      "description": "Intelligent Cloud and IoT-based solar energy monitoring system. Real-time dashboard and ML regression model for solar production prediction.",
+      "image": "/images/solar.png",
+      "tags": [
+        "Python",
+        "Machine Learning",
+        "ESP8266",
+        "IoT",
+        "Cloud"
+      ],
+      "category": "cloud",
+      "link": "https://github.com/iyedM",
+      "featured": false
+    }
+  ],
+  "experiences": [
+    {
+      "id": "1",
+      "company": "ESPRIT - Integration Project",
+      "role": "Full-Stack Developer - Swapify",
+      "period": "Feb 2025 - Apr 2025",
+      "description": "Developed a cross-platform item exchange application. Responsible for blog system with admin approval, AI integration for automatic summarization and content moderation.",
+      "technologies": [
+        "Symfony",
+        "JavaFX",
+        "MySQL",
+        "AI/NLP"
+      ]
+    },
+    {
+      "id": "2",
+      "company": "Prodigy Infotech",
+      "role": "Full-Stack Web Developer Intern",
+      "period": "Jul 2024 - Aug 2024",
+      "description": "Developed a Discord-inspired real-time chat application. Implemented authentication, chat rooms, multimedia sharing, and audio/video calls.",
+      "technologies": [
+        "Node.js",
+        "React",
+        "WebSocket",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": "3",
+      "company": "ISIMG - Graduation Project",
+      "role": "IoT & AI Engineer",
+      "period": "Feb 2024 - May 2024",
+      "description": "IoT wheat traceability system integrating AI (CNN TensorFlow), Blockchain, SSI, and React Native mobile app. Deployed on Raspberry Pi with TensorFlow Lite.",
+      "technologies": [
+        "TensorFlow",
+        "Raspberry Pi",
+        "React Native",
+        "IPFS",
+        "Blockchain"
+      ]
+    },
+    {
+      "id": "4",
+      "company": "SOGREGA SARL",
+      "role": "Front-End Developer Intern",
+      "period": "Jun 2023 - Jul 2023",
+      "description": "Introductory frontend development internship. Created interactive and visually appealing web interfaces with HTML, CSS, and JavaScript.",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "1",
+      "name": "Azure Fundamentals (AZ-900)",
+      "issuer": "Microsoft",
+      "year": "2024",
+      "icon": "azure"
+    },
+    {
+      "id": "2",
+      "name": "Azure AI Fundamentals (AI-900)",
+      "issuer": "Microsoft",
+      "year": "2024",
+      "icon": "ai"
+    },
+    {
+      "id": "3",
+      "name": "Azure Data Fundamentals (DP-900)",
+      "issuer": "Microsoft",
+      "year": "2024",
+      "icon": "database"
+    }
+  ],
+  "analytics": {
+    "views": 7,
+    "lastUpdated": "2025-12-18T22:12:53.453Z"
+  },
+  "messages": [
+    {
+      "name": "iyed iyed",
+      "email": "iyed@gmail.com",
+      "subject": "testing",
+      "message": "tell me a test ",
+      "id": "1766095378178",
+      "date": "2025-12-18T22:02:58.178Z",
+      "read": true
+    }
+  ]
+}
