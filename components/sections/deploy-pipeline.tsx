@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FadeInUp } from '@/components/ui/motion'
 import { Rocket, Terminal, Shield, Server, CheckCircle2, Loader2, Download, Github } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { trackPipelineDeploy } from '@/lib/achievements'
 
 interface PipelineStage {
   id: string
@@ -135,6 +136,9 @@ export function DeployPipeline() {
       setCurrentLogs(prev => [...prev, ''])
     }
 
+    // Track achievement
+    trackPipelineDeploy()
+    
     setIsComplete(true)
     setIsRunning(false)
   }

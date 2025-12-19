@@ -11,8 +11,12 @@ import {
   TerminalNav,
   DeployPipeline,
   K8sDashboard,
-  IaCTimeline
+  IaCTimeline,
+  StatusPage,
+  AchievementsDisplay,
+  CheatCodes
 } from '@/components/sections'
+import { ASCIIHeader } from '@/components/sections/ascii-header'
 
 export const revalidate = 0
 
@@ -21,6 +25,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <ASCIIHeader />
       <Navbar />
       <main>
         <Hero profile={data.profile} />
@@ -33,12 +38,15 @@ export default async function HomePage() {
           experiences={data.experiences} 
           certifications={data.certifications} 
         />
+        <StatusPage />
         <Contact profile={data.profile} />
       </main>
       <Footer 
         socialLinks={data.profile.socialLinks}
         email={data.profile.email}
       />
+      <AchievementsDisplay />
+      <CheatCodes />
     </>
   )
 }

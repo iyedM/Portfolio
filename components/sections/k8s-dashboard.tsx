@@ -6,6 +6,7 @@ import { FadeInUp, StaggerContainer, StaggerItem } from '@/components/ui/motion'
 import { Icon } from '@/components/ui/icons'
 import { cn } from '@/lib/utils'
 import { Layers, Activity, Cpu, HardDrive, RefreshCw, ChevronRight, X } from 'lucide-react'
+import { trackPodClick } from '@/lib/achievements'
 import type { Skill, Category } from '@/lib/data'
 
 interface K8sDashboardProps {
@@ -44,8 +45,11 @@ export function K8sDashboard({ skills, categories }: K8sDashboardProps) {
   const [selectedPod, setSelectedPod] = useState<Skill | null>(null)
   const [isRefreshing, setIsRefreshing] = useState(false)
 
-  // Initialize metrics
+  // Initialize metrics - only on client
+  const [mounted, setMounted] = useState(false)
+  
   useEffect(() => {
+    setMounted(true)
     const metrics: Record<string, PodMetrics> = {}
     skills.forEach(skill => {
       metrics[skill.id] = generateMetrics()
@@ -101,8 +105,8 @@ export function K8sDashboard({ skills, categories }: K8sDashboardProps) {
   // Calculate totals
   const totalPods = filteredSkills.length
   const runningPods = totalPods
-  const avgCpu = filteredSkills.reduce((acc, s) => acc + (podMetrics[s.id]?.cpu || 0), 0) / totalPods || 0
-  const avgMemory = filteredSkills.reduce((acc, s) => acc + (podMetrics[s.id]?.memory || 0), 0) / totalPods || 0
+  const avgCpu = mounted ? filteredSkills.reduce((acc, s) => acc + (podMetrics[s.id]?.cpu || 0), 0) / totalPods || 0 : 0
+  const avgMemory = mounted ? filteredSkills.reduce((acc, s) => acc + (podMetrics[s.id]?.memory || 0), 0) / totalPods || 0 : 0
 
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
@@ -208,7 +212,10 @@ export function K8sDashboard({ skills, categories }: K8sDashboardProps) {
               <StaggerItem key={skill.id}>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  onClick={() => setSelectedPod(skill)}
+                  onClick={() => {
+                    trackPodClick()
+                    setSelectedPod(skill)
+                  }}
                   className={cn(
                     'tech-card p-4 cursor-pointer transition-all',
                     'hover:border-primary/50'

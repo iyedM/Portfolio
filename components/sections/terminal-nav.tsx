@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FadeInUp } from '@/components/ui/motion'
 import { ChevronRight, Terminal } from '@/components/ui/icons'
 import { cn } from '@/lib/utils'
+import { trackTerminalCommand } from '@/lib/achievements'
 
 interface Command {
   cmd: string
@@ -124,6 +125,102 @@ export function TerminalNav() {
     setHistoryIndex(-1)
     setIsProcessing(true)
 
+    // Easter Eggs
+    if (trimmedCmd === 'sudo rm -rf /' || trimmedCmd.includes('rm -rf')) {
+      addLine('error', 'Nice try! 😏 System protected.')
+      addLine('output', 'This is a read-only filesystem. Your destructive commands are blocked.')
+      addLine('output', '')
+      setIsProcessing(false)
+      setInput('')
+      return
+    }
+
+    if (trimmedCmd === 'cat /etc/passwd') {
+      addLine('output', '')
+      addLine('help', '╔══════════════════════════════════════════════════════════════╗')
+      addLine('help', '║                    CONTACT INFORMATION                       ║')
+      addLine('help', '╠══════════════════════════════════════════════════════════════╣')
+      addLine('help', '║  Name:    Iyed Mohamed                                      ║')
+      addLine('help', '║  Email:   iyed.mohamed@esprit.tn                           ║')
+      addLine('help', '║  GitHub:  github.com/iyedM                                  ║')
+      addLine('help', '║  LinkedIn: linkedin.com/in/iyed-mohamed                     ║')
+      addLine('help', '║  Status:  Available for opportunities                      ║')
+      addLine('help', '╚══════════════════════════════════════════════════════════════╝')
+      addLine('output', '')
+      setIsProcessing(false)
+      setInput('')
+      return
+    }
+
+    if (trimmedCmd === 'cowsay hello' || trimmedCmd.startsWith('cowsay')) {
+      const message = cmd.includes('cowsay') && cmd.length > 7 ? cmd.substring(7).trim() : 'hello'
+      const border = '─'.repeat(Math.max(20, message.length + 2))
+      addLine('output', '')
+      addLine('output', `  ${border}`)
+      addLine('output', ` < ${message} >`)
+      addLine('output', `  ${border}`)
+      addLine('output', '         \\   ^__^')
+      addLine('output', '          \\  (oo)\\_______')
+      addLine('output', '             (__)\\       )\\/\\')
+      addLine('output', '                 ||----w |')
+      addLine('output', '                 ||     ||')
+      addLine('output', '')
+      setIsProcessing(false)
+      setInput('')
+      return
+    }
+
+    if (trimmedCmd === 'neofetch') {
+      addLine('output', '')
+      addLine('help', '       _            _     _')
+      addLine('help', '      (_)          | |   | |')
+      addLine('help', '  _ __  _  ___  ___| | __| |')
+      addLine('help', ' | \'_ \\| |/ _ \\/ __| |/ _` |')
+      addLine('help', ' | | | | |  __/ (__| | (_| |')
+      addLine('help', ' |_| |_|_|\\___|\\___|_|\\__,_|')
+      addLine('output', '')
+      addLine('output', 'OS: Cloud & DevOps Engineering')
+      addLine('output', 'Host: ESPRIT University')
+      addLine('output', 'Kernel: Software Engineering')
+      addLine('output', 'Uptime: Since 2021')
+      addLine('output', 'Shell: bash 5.x')
+      addLine('output', 'Skills: Docker, K8s, Terraform, Azure, AI/ML')
+      addLine('output', 'Languages: Python, JavaScript, C/C++, Java, PHP')
+      addLine('output', 'Certifications: Azure Fundamentals, AI-900, DP-900')
+      addLine('output', '')
+      setIsProcessing(false)
+      setInput('')
+      return
+    }
+
+    if (trimmedCmd === 'cmatrix') {
+      trackTerminalCommand()
+      addLine('output', '')
+      addLine('output', 'Matrix mode activated! 🌌')
+      addLine('output', '')
+      addLine('output', 'docker pull ubuntu:latest')
+      addLine('output', 'kubectl apply -f deployment.yaml')
+      addLine('output', 'terraform init')
+      addLine('output', 'terraform plan')
+      addLine('output', 'terraform apply')
+      addLine('output', 'git push origin main')
+      addLine('output', 'npm run build')
+      addLine('output', 'docker-compose up -d')
+      addLine('output', 'kubectl get pods')
+      addLine('output', '')
+      addLine('output', '...falling commands...')
+      addLine('output', '')
+      setIsProcessing(false)
+      setInput('')
+      return
+    }
+    
+    // Track easter egg commands
+    if (trimmedCmd === 'cowsay hello' || trimmedCmd.startsWith('cowsay') || 
+        trimmedCmd === 'neofetch' || trimmedCmd === 'cat /etc/passwd') {
+      trackTerminalCommand()
+    }
+
     // Find matching command
     const matchedCommand = commands.find(c => 
       trimmedCmd === c.cmd.toLowerCase() || 
@@ -139,6 +236,14 @@ export function TerminalNav() {
         const paddedCmd = c.cmd.padEnd(28)
         addLine('help', `║  ${paddedCmd} │ ${c.description.padEnd(28)} ║`)
       })
+      addLine('help', '╠══════════════════════════════════════════════════════════════╣')
+      addLine('help', '║                    EASTER EGGS 🥚                            ║')
+      addLine('help', '╠══════════════════════════════════════════════════════════════╣')
+      addLine('help', '║  sudo rm -rf /      │ Try to delete everything 😏            ║')
+      addLine('help', '║  cat /etc/passwd    │ Show contact information               ║')
+      addLine('help', '║  cowsay hello       │ ASCII art cow                         ║')
+      addLine('help', '║  neofetch           │ Display system info                    ║')
+      addLine('help', '║  cmatrix            │ Matrix rain effect                    ║')
       addLine('help', '╚══════════════════════════════════════════════════════════════╝')
       addLine('output', '')
     } else if (trimmedCmd === 'clear') {
@@ -147,6 +252,9 @@ export function TerminalNav() {
         { type: 'output', content: '', id: lineIdRef.current++ },
       ])
     } else if (matchedCommand && matchedCommand.section) {
+      // Track command for achievement
+      trackTerminalCommand()
+      
       // Show output lines
       matchedCommand.output?.forEach(line => {
         addLine('output', line)
