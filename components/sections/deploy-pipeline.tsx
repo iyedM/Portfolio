@@ -139,6 +139,16 @@ export function DeployPipeline() {
     // Track achievement
     trackPipelineDeploy()
     
+    // Track activity
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('portfolio-activity', {
+        detail: { 
+          message: 'CI/CD Pipeline deployed successfully',
+          type: 'deploy'
+        }
+      }))
+    }
+    
     setIsComplete(true)
     setIsRunning(false)
   }

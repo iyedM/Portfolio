@@ -13,11 +13,14 @@ import {
   K8sDashboard,
   IaCTimeline,
   StatusPage,
+  ChallengesSection,
   AchievementsDisplay,
-  TypingChallenge
+  ActivityFeed,
+  PerformanceMonitor
 } from '@/components/sections'
 import { ASCIIHeader } from '@/components/sections/ascii-header'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { LanguageToggle } from '@/components/language-toggle'
 
 export const revalidate = 0
 
@@ -41,14 +44,17 @@ export default async function HomePage() {
         />
         <StatusPage />
         <Contact profile={data.profile} />
+        <ChallengesSection />
       </main>
       <Footer 
         socialLinks={data.profile.socialLinks}
         email={data.profile.email}
       />
       <AchievementsDisplay />
-      <TypingChallenge />
+      <ActivityFeed />
+      <PerformanceMonitor />
       <ThemeToggle />
+      <LanguageToggle />
     </>
   )
 }

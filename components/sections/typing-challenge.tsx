@@ -179,6 +179,10 @@ export function TypingChallenge() {
                   type="text"
                   value={userInput}
                   onChange={(e) => handleInputChange(e.target.value)}
+                  onPaste={(e) => e.preventDefault()}
+                  onCopy={(e) => e.preventDefault()}
+                  onCut={(e) => e.preventDefault()}
+                  onContextMenu={(e) => e.preventDefault()}
                   className="w-full px-3 py-2 rounded-lg bg-background border border-border font-mono text-sm focus:outline-none focus:border-primary"
                   placeholder="Start typing..."
                   autoFocus

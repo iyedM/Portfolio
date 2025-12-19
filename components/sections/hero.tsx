@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronRight, Github, Linkedin, Mail, MapPin, Terminal } from '@/components/ui/icons'
 import type { Profile } from '@/lib/data'
+import { StatsHeader } from './stats-header'
 
 interface HeroProps {
   profile: Profile
@@ -17,6 +18,7 @@ export function Hero({ profile }: HeroProps) {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <StatsHeader />
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Grid pattern - Terminal style */}

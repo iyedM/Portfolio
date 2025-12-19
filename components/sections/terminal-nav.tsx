@@ -269,6 +269,15 @@ export function TerminalNav() {
       // Scroll to section after a short delay
       setTimeout(() => {
         scrollToSection(matchedCommand.section)
+        // Track activity
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('portfolio-activity', {
+            detail: { 
+              message: `Navigated to ${matchedCommand.section} section`,
+              type: 'command'
+            }
+          }))
+        }
       }, 500)
     } else if (trimmedCmd === '') {
       // Do nothing for empty command

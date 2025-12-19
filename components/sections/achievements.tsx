@@ -56,6 +56,14 @@ const achievements: Achievement[] = [
     color: 'from-indigo-500 to-violet-500',
     unlocked: false
   },
+  {
+    id: 'marathon',
+    name: 'Marathon',
+    description: 'Explored for 10+ minutes',
+    icon: Rocket,
+    color: 'from-rose-500 to-pink-500',
+    unlocked: false
+  },
 ]
 
 export function useAchievements() {
@@ -76,6 +84,16 @@ export function useAchievements() {
       // Show notification (no localStorage save - reset on reload)
       setNewAchievement(achievement)
       setTimeout(() => setNewAchievement(null), 4000)
+
+      // Track activity
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('portfolio-activity', {
+          detail: { 
+            message: `Achievement unlocked: ${achievement.name}`,
+            type: 'achievement'
+          }
+        }))
+      }
 
       return updated
     })

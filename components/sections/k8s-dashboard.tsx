@@ -225,6 +225,14 @@ export function K8sDashboard({ skills, categories }: K8sDashboardProps) {
                   onClick={() => {
                     trackPodClick()
                     setSelectedPod(skill)
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('portfolio-activity', {
+                        detail: { 
+                          message: `Clicked on ${skill.name} pod`,
+                          type: 'click'
+                        }
+                      }))
+                    }
                   }}
                   className={cn(
                     'tech-card p-4 cursor-pointer transition-all',
