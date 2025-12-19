@@ -59,18 +59,8 @@ const achievements: Achievement[] = [
 ]
 
 export function useAchievements() {
-  const [achievementsState, setAchievementsState] = useState<Achievement[]>(() => {
-    if (typeof window === 'undefined') return achievements
-    const stored = localStorage.getItem('achievements')
-    if (stored) {
-      const unlocked = JSON.parse(stored)
-      return achievements.map(a => ({
-        ...a,
-        unlocked: unlocked.includes(a.id)
-      }))
-    }
-    return achievements
-  })
+  // Always start with all achievements locked (reset on each page load)
+  const [achievementsState, setAchievementsState] = useState<Achievement[]>(achievements)
 
   const [newAchievement, setNewAchievement] = useState<Achievement | null>(null)
 
@@ -83,11 +73,7 @@ export function useAchievements() {
         a.id === id ? { ...a, unlocked: true } : a
       )
 
-      // Save to localStorage
-      const unlockedIds = updated.filter(a => a.unlocked).map(a => a.id)
-      localStorage.setItem('achievements', JSON.stringify(unlockedIds))
-
-      // Show notification
+      // Show notification (no localStorage save - reset on reload)
       setNewAchievement(achievement)
       setTimeout(() => setNewAchievement(null), 4000)
 

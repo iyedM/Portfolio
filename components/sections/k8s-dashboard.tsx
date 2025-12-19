@@ -78,19 +78,29 @@ export function K8sDashboard({ skills, categories }: K8sDashboardProps) {
   }, [skills])
 
   const refreshMetrics = async () => {
+    if (isRefreshing) return // Prevent multiple refreshes
+    
     setIsRefreshing(true)
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    const metrics: Record<string, PodMetrics> = {}
+    await new Promise(resolve => setTimeout(resolve, 500))
+    
+    // Generate new metrics for all skills
+    const newMetrics: Record<string, PodMetrics> = {}
     skills.forEach(skill => {
-      metrics[skill.id] = generateMetrics()
+      newMetrics[skill.id] = generateMetrics()
     })
-    setPodMetrics(metrics)
+    
+    // Force update by creating new object reference
+    setPodMetrics({ ...newMetrics })
     setIsRefreshing(false)
   }
 
   const filteredSkills = selectedNamespace === 'all' 
     ? skills 
-    : skills.filter(s => s.category === selectedNamespace)
+    : skills.filter(s => {
+        // Match by category slug
+        const category = categories.find(c => c.slug === selectedNamespace)
+        return category && s.category === category.slug
+      })
 
   const getCategoryColor = (slug: string) => {
     const category = categories.find(c => c.slug === slug)
