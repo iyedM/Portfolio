@@ -14,9 +14,10 @@ import {
   IaCTimeline,
   StatusPage,
   AchievementsDisplay,
-  CheatCodes
+  TypingChallenge
 } from '@/components/sections'
 import { ASCIIHeader } from '@/components/sections/ascii-header'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export const revalidate = 0
 
@@ -46,7 +47,8 @@ export default async function HomePage() {
         email={data.profile.email}
       />
       <AchievementsDisplay />
-      <CheatCodes />
+      <TypingChallenge />
+      <ThemeToggle />
     </>
   )
 }

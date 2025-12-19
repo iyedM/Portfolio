@@ -6,24 +6,25 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         // Palette Cloud/DevOps/AI - Cyberpunk Tech
-        background: '#0a0a0f',
+        background: 'var(--background)',
         surface: {
-          DEFAULT: '#12121a',
-          light: '#1a1a25',
-          lighter: '#252535',
+          DEFAULT: 'var(--surface)',
+          light: 'var(--surface-light)',
+          lighter: 'var(--surface-lighter)',
         },
         primary: {
-          DEFAULT: '#00d4ff', // Cyan électrique
+          DEFAULT: 'var(--primary)',
           dark: '#00a8cc',
           light: '#5cefff',
           glow: 'rgba(0, 212, 255, 0.4)',
         },
         secondary: {
-          DEFAULT: '#7c3aed', // Violet
+          DEFAULT: 'var(--secondary)',
           dark: '#5b21b6',
           light: '#a78bfa',
         },
@@ -34,13 +35,13 @@ const config: Config = {
           error: '#ef4444',
         },
         text: {
-          DEFAULT: '#f1f5f9',
-          secondary: '#94a3b8',
-          tertiary: '#64748b',
+          DEFAULT: 'var(--text)',
+          secondary: 'var(--text-secondary)',
+          tertiary: 'var(--text-tertiary)',
         },
         border: {
-          DEFAULT: '#1e293b',
-          light: '#334155',
+          DEFAULT: 'var(--border)',
+          light: 'var(--border-light)',
         }
       },
       fontFamily: {
