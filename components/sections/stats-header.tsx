@@ -51,7 +51,7 @@ export function StatsHeader() {
   }
 
   return (
-    <div className="absolute top-4 left-4 right-4 z-40 flex items-center justify-between gap-4">
+    <div className="absolute top-4 left-4 z-40 flex flex-col gap-2">
       {/* Visit Counter */}
       {visitCount !== null && (
         <motion.div
