@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Users, Sparkles } from 'lucide-react'
+import { Users } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export function VisitCounter() {
@@ -12,14 +12,14 @@ export function VisitCounter() {
 
   useEffect(() => {
     setMounted(true)
-    // Get current visit count
+    // Récupérer le nombre de visites depuis l'API
     fetch('/api/analytics/views')
       .then(res => res.json())
       .then(data => {
-        const count = data.views || 0
+        const count = data?.views ?? 0
         setVisitCount(count)
-        
-        // Check for milestones
+
+        // Confetti sur milestones
         const milestones = [100, 500, 1000, 2500, 5000, 10000]
         if (milestones.includes(count)) {
           setShowConfetti(true)
@@ -29,16 +29,14 @@ export function VisitCounter() {
       .catch(() => setVisitCount(0))
   }, [])
 
-  // This component is now replaced by StatsHeader
-  return null
+  // Formater les nombres avec séparateur de milliers
+  const formatNumber = (num: number) => num.toLocaleString('en-US')
 
-  const formatNumber = (num: number) => {
-    return num.toLocaleString('en-US')
-  }
+  if (!mounted) return null // évite le mismatch côté client/server
 
   return (
     <>
-      {/* Confetti Effect */}
+      {/* Confetti */}
       <AnimatePresence>
         {showConfetti && (
           <motion.div
@@ -79,7 +77,7 @@ export function VisitCounter() {
         )}
       </AnimatePresence>
 
-      {/* Counter Display */}
+      {/* Compteur de visites */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -95,7 +93,7 @@ export function VisitCounter() {
               animate={{ scale: 1, color: 'inherit' }}
               className="font-bold text-primary ml-1"
             >
-              #{formatNumber(visitCount)}
+              # {visitCount !== null ? formatNumber(visitCount) : '0'}
             </motion.span>
           </div>
         </div>
@@ -103,4 +101,3 @@ export function VisitCounter() {
     </>
   )
 }
-
