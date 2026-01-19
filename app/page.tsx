@@ -32,26 +32,38 @@ export default async function HomePage() {
       <ASCIIHeader />
       <Navbar />
       <main>
-        <Hero profile={data.profile} />
+        <section id="home">
+          <Hero profile={data.profile} />
+        </section>
         <TerminalNav />
-        <About profile={data.profile} />
+        <section id="about">
+          <About profile={data.profile} />
+        </section>
         <DeployPipeline />
-        <K8sDashboard skills={data.skills} categories={data.categories} />
-        <Projects projects={data.projects} categories={data.categories} />
-        <IaCTimeline 
-          experiences={data.experiences} 
-          certifications={data.certifications} 
-        />
+        <section id="skills">
+          <K8sDashboard skills={data.skills} categories={data.categories} />
+        </section>
+        <section id="projects">
+          <Projects projects={data.projects} categories={data.categories} />
+        </section>
+        <section id="experience">
+          <IaCTimeline 
+            experiences={data.experiences} 
+            certifications={data.certifications} 
+          />
+        </section>
         <StatusPage />
-        <Contact profile={data.profile} />
+        <section id="contact">
+          <Contact profile={data.profile} />
+        </section>
         <ChallengesSection />
       </main>
       <Footer 
         socialLinks={data.profile.socialLinks}
         email={data.profile.email}
       />
-      <AchievementsDisplay />
-      <ActivityFeed />
+      {/*<AchievementsDisplay />*/}
+      {/*<ActivityFeed />*/}
       <PerformanceMonitor />
       <ThemeToggle />
       <LanguageToggle />
