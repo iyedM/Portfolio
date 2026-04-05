@@ -134,82 +134,70 @@
   "projects": [
     {
       "id": "1",
-      "title": "Smart Personal Cloud Monitoring Lab",
-      "description": "Mini cloud monitoring lab with a containerized Python application, Infrastructure as Code (IaC) with Terraform, and automated CI/CD pipeline with GitHub Actions.",
-      "image": "/images/cloud-lab.png",
+      "title": "Multi-Service App – CI/CD with GitHub Actions & Docker Hub",
+      "description": "Microservices web app with 3 isolated containers. Full GitHub Actions CI/CD pipeline: automated testing, Docker image build & push to Docker Hub, SSH deployment in under 2 min. Docker Compose for local orchestration.",
+      "image": "/images/cicd-docker.png",
       "tags": [
+        "React",
+        "Node.js",
         "Docker",
-        "Terraform",
         "GitHub Actions",
-        "Python",
-        "DevOps"
+        "Docker Hub"
       ],
       "category": "devops",
-      "link": "https://github.com/iyedM/Smart-Personal-Cloud-Monitoring-Lab",
+      "period": "09/2025 – 10/2025",
+      "link": "https://github.com/iyedM",
       "featured": true
     },
     {
       "id": "2",
-      "title": "IoT Wheat Supply Chain Traceability",
-      "description": "IoT-based wheat supply chain traceability system for Tunisia, integrating IoT, AI (CNN with TensorFlow), Blockchain, and Self-Sovereign Identity (SSI). React Native mobile app for credential verification.",
-      "image": "/images/wheat-iot.png",
+      "title": "Automated Log Monitoring & Alerting System",
+      "description": "Containerized monitoring stack (Prometheus + Grafana + Alertmanager) tracking 5+ custom metrics. Custom Python exporter exposing app metrics; Grafana dashboards with Slack alerting on threshold breaches.",
+      "image": "/images/monitoring.png",
       "tags": [
-        "IoT",
-        "TensorFlow",
-        "Blockchain",
-        "React Native",
-        "Raspberry Pi",
-        "IPFS"
+        "Python",
+        "Prometheus",
+        "Grafana",
+        "Docker Compose",
+        "Alertmanager"
       ],
-      "category": "ai",
+      "category": "devops",
+      "period": "11/2025 – 12/2025",
       "link": "https://github.com/iyedM",
       "featured": true
     },
     {
       "id": "3",
-      "title": "Swapify - Exchange Platform",
-      "description": "Cross-platform application promoting responsible consumption. Blog system with AI moderation, automatic description summarization, and inappropriate content detection.",
-      "image": "/images/swapify.png",
+      "title": "Private Cloud Infrastructure – OpenStack Cluster",
+      "description": "3-node private cloud (Controller + 2 Compute nodes) with 6 OpenStack services from scratch. Ansible playbooks reducing setup from 4h to under 15 min. Heat for IaC. Kubernetes cluster (kubeadm) on OpenStack VMs with Deployments, Services, and Ingress.",
+      "image": "/images/openstack.png",
       "tags": [
-        "Symfony",
-        "JavaFX",
-        "MySQL",
-        "AI",
-        "Content Moderation"
+        "OpenStack",
+        "Ansible",
+        "Kubernetes",
+        "Docker",
+        "Heat"
       ],
-      "category": "ai",
+      "category": "cloud",
+      "period": "10/2025 – 02/2026",
       "link": "https://github.com/iyedM",
       "featured": true
     },
     {
       "id": "4",
-      "title": "Real-time Chat Application",
-      "description": "Discord-inspired real-time chat application with secure authentication, chat rooms, private messages, multimedia sharing, audio/video calls, and group management.",
-      "image": "/images/chat-app.png",
+      "title": "Personal Portfolio – Deployed on AWS EC2",
+      "description": "Dynamic portfolio with admin panel (Next.js + Node.js), deployed on AWS EC2 behind Nginx with SSL via Let's Encrypt. GitHub Actions pipeline: build → SSH deploy → Nginx reload. Elastic IP and DNS configured for production.",
+      "image": "/images/portfolio-aws.png",
       "tags": [
+        "Next.js",
+        "Tailwind CSS",
         "Node.js",
-        "React",
-        "WebSocket",
-        "MongoDB",
-        "WebRTC"
-      ],
-      "category": "devops",
-      "link": "https://github.com/iyedM",
-      "featured": false
-    },
-    {
-      "id": "5",
-      "title": "Solar Energy Monitoring System",
-      "description": "Intelligent Cloud and IoT-based solar energy monitoring system. Real-time dashboard and ML regression model for solar production prediction.",
-      "image": "/images/solar.png",
-      "tags": [
-        "Python",
-        "Machine Learning",
-        "ESP8266",
-        "IoT",
-        "Cloud"
+        "AWS EC2",
+        "Nginx",
+        "GitHub Actions"
       ],
       "category": "cloud",
+      "period": "02/2026 – 03/2026",
       "link": "https://github.com/iyedM",
       "featured": false
     }
